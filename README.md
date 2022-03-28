@@ -4,4 +4,4 @@
     and add to it while also learning Github along the way.
 ![](BlackJackOutputGif.gif)
 <br/>
-<br/>"Red Five standing by."
+<br/>"Red Five standing by.."
