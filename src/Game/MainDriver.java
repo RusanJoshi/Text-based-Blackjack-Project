@@ -42,5 +42,4 @@ Ace: 0, 13, 26, 39
  [ ] Implement exception handling P:3/24 (May not be necessary)
  [ ] Ask player if they would like to play again. P:3/27
 
- Check StickyNote for notes and bugs.
  */
