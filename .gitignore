@@ -1,4 +1,5 @@
-.idea
-out
-/Blackjack.iml
+/.idea
+/out
+Blackjack.iml
+testIgnore.txt
 
