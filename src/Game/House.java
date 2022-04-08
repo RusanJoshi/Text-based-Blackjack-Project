@@ -57,14 +57,8 @@ public class House {
       housePlayLogistics(tempCard.getCardValue() + 1);
    }//Current Hits: RANDOM
    public void hitHouse(){
-      if(hitCounter < 0){ //may be redundant, check when (1.0) is finished
-         dealHouse();
-         hitCounter++;
-      }
-      else{
-         dealHouse();
-         hitCounter++;
-      }
+      dealHouse();
+      hitCounter++;
    }
 
    public void houseDisplayCardsOnHand(int pDisplay){
