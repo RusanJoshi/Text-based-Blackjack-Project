@@ -5,6 +5,7 @@
 
     Code will only run in IDE or Terminal
     No documentation as of yet. I am lazy.
+
 ![](BlackJackOutputGif.gif)
 <br/>
 <br/>"Red Five standing by."
