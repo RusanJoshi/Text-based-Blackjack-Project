@@ -17,6 +17,7 @@ public class House {
 
    private int hitCounter = -2;
    private int largestValue = 0;
+   private int losingValue = 0;
    boolean secondRoundCheck = false;
 
    public void pickUpDeck(){
@@ -50,8 +51,8 @@ public class House {
 
    private void dealHouse(){
       Cards tempCard = new Cards();
-      tempCard = getSingleCard();
       //tempCard = getSpecificCard();
+      tempCard = getSingleCard();
       houseHand.add(tempCard);
 
       housePlayLogistics(tempCard.getCardValue() + 1);
@@ -171,16 +172,18 @@ public class House {
       }
 
       if(!secondRoundCheck){
+         //losingValue = largestValue;
          largestValue = 0;
       }
    }
    public int getLargestValue(){
       return largestValue;
-   };
+   }
+   public int getLosingValue(){return losingValue; }
 
    public void houseFrontalLobe(int pPlayerLargestValue){
-      if(largestValue <= 16 && pPlayerLargestValue > 0){
-         System.out.println("House is <= 16. Drawing another card.");
+      if(largestValue <= 16 && pPlayerLargestValue > 0 && pPlayerLargestValue < 21){
+         System.out.println("House is drawing another card. (House < 17)");
          hitHouse();
       }
       houseDisplayCardsOnHand(1);
