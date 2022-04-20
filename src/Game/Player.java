@@ -14,6 +14,7 @@ public class Player {
     private int hitCounter = -2;
     private String yesOrNo = "yes";
     private int largestValue;
+    private int losingValue;
     private boolean secondRoundCheck = false;
     private boolean winnerParameter = false;
     private boolean bustParameter = false;
@@ -46,7 +47,7 @@ public class Player {
         dealer.houseDisplayPlays(0);
         System.out.println("----------------------------");
         value21Victory();
-        endGameWhenHigherThan21();
+        endGameWhenHigherThan21(); //May be redundant
     }
     private void askPlayerToHit(){
         if(!winnerParameter && !bustParameter){
@@ -67,8 +68,8 @@ public class Player {
     }
     private void dealPlayer(){
         Cards tempCard = new Cards();
-        tempCard = dealer.getSingleCard();
         //tempCard = dealer.getSpecificCard();
+        tempCard = dealer.getSingleCard();
         Hand.add(tempCard);
 
         playLogistics(tempCard.getCardValue() + 1);
@@ -80,12 +81,9 @@ public class Player {
         }
         else {
             dealPlayer();
-            //player
             displayCardsOnHand();
             displayPlays();
-            //house
             dealer.houseDisplayCardsOnHand(0);
-            //dealer.houseDisplayPlays(1);
             System.out.println("----------------------------");
             value21Victory();
             endGameWhenHigherThan21();
@@ -102,7 +100,6 @@ public class Player {
     private void displayPlays(){
         displayedPlays = new int[6];
         subDisplayPlays();
-
         //Displaying and Searching for largestValue
         for(int realPlays = 0; realPlays < displayedPlays.length; realPlays++){
             if(displayedPlays[realPlays] > 0) System.out.print(displayedPlays[realPlays] + ", ");
@@ -183,21 +180,30 @@ public class Player {
             }
             else secondRoundCheck = false;
         }
-
         if(!secondRoundCheck){
+            //losingValue = largestValue;
             largestValue = 0;
         }
     }
     private void whoWins(){
-        System.out.println("Player: " + largestValue);
-        System.out.println("House: " + dealer.getLargestValue() +"\n");
+        if(largestValue == 0){
+            System.out.println("Player: BUST" ); //Attempted to display value that led to BUST, but could not do so.
+        } else System.out.println("Player: " + largestValue);
+        if(dealer.getLargestValue() == 0){
+            System.out.println("House: BUST" + "\n");
+        } System.out.println("House: " + dealer.getLargestValue() +"\n");
 
         displayCardsOnHand();
         System.out.println();
         dealer.houseFrontalLobe(largestValue);
 
-        System.out.println("\nPlayer: " + largestValue);
-        System.out.println("House: " + dealer.getLargestValue());
+        if(largestValue == 0){
+            System.out.println("\nPlayer: BUST");
+        } else System.out.println("\nPlayer: " + largestValue);
+
+        if(dealer.getLargestValue() == 0){
+            System.out.println("House: BUST");
+        } else System.out.println("House: " + dealer.getLargestValue());
 
         //House beats Player
         if(largestValue < dealer.getLargestValue()){

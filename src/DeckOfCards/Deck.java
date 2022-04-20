@@ -8,18 +8,17 @@ public class Deck{
     private final String[] Colors = {"Red", "Black"};
     private final String[] Visibility = {"[A]", "[J]", "[Q]", "[K]"};
 
-    public Deck(){
-
-    }
-    public void deckBuilder(){ // invoke this method after creating a Deck object in MainDriver
-       int cardCounting = 0;
+    public Deck(){}
+    public void deckBuilder(){
+        int cardCounting = 0;
 
         for (int builder = 0; builder < 52; builder++){ //Stores Card Objects within Deck52 elements
             Deck52[builder] = new Cards();
         }
 
         for (int suitCount = 0; suitCount < 4; suitCount++) {
-            for (int valueCount = 0; valueCount < 13; valueCount++) { //TODO: this needs to be changed.(10,J,Q,K = 10)
+            for (int valueCount = 0; valueCount < 13; valueCount++) {
+
                 generateCardProperties(cardCounting, suitCount, valueCount);
                 cardCounting++;
             }
@@ -27,7 +26,10 @@ public class Deck{
     }
     public void generateCardProperties(int pCount, int pSuit, int pValue){
         Deck52[pCount].setCardSuit(pSuit);
-        Deck52[pCount].setCardValue(pValue);
+        if(pValue > 9){ // if(>= Jack), then make card value = 10, (10,J,Q,K = 10)
+            Deck52[pCount].setCardValue(9);
+        }
+        else Deck52[pCount].setCardValue(pValue);
         if(pSuit > 1){
             Deck52[pCount].setCardColor(1);
         }else Deck52[pCount].setCardColor(0);
