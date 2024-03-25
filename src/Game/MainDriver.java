@@ -33,7 +33,7 @@ public class MainDriver {
  [X] End game if Player or House is > 21 P:3/23-F:3/27
  [X] If Player/House bust, display bust instead of value 0 P:3/24-F:4/8
  [ ] Implement exception handling P:3/24 (May not be necessary)
- [ ] Ask player if they would like to play again. P:3/27
+ [ ] Ask player if they would like to play again. P:3/27 (may have to reset hitCounter (Player.java))
 
  For me:
  DECK52 Values
