@@ -3,4 +3,4 @@
     Practicing GitHub.
     (2022)
 
-![](BlackJackOutputGif.gif)
+![](site/BlackJackOutputGif.gif)
